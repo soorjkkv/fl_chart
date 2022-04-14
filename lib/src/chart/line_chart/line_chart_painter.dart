@@ -339,8 +339,14 @@ class LineChartPainter extends AxisChartPainter<LineChartData> {
       /// For drawing the indicator line
       final lineStartY = min(data.maxY,
           max(data.minY, data.lineTouchData.getTouchLineStart(barData, index)));
-      final lineEndY = min(data.maxY,
-          max(data.minY, data.lineTouchData.getTouchLineEnd(barData, index)));
+
+      // Original Code
+      // final lineEndY = min(data.maxY,
+      //     max(data.minY, data.lineTouchData.getTouchLineEnd(barData, index)));
+
+      // Modified - Draw indicator line to full height
+      final lineEndY = data.maxY;
+
       final lineStart =
           Offset(touchedSpot.dx, getPixelY(lineStartY, viewSize, holder));
       var lineEnd =
